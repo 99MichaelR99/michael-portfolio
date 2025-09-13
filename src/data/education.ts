@@ -10,7 +10,7 @@ export const education = [
     ]
   },
   {
-    degree: 'B.Sc. in Computer Science (GPA 86.1)',
+    degree: 'B.Sc. in Computer Science',
     school: 'Technion — Israel Institute of Technology',
     start: 'October 2018',
     end: 'April 2023',
@@ -22,7 +22,7 @@ export const education = [
     ]
   },
   {
-    degree: 'B.Sc. in Computer Science (GPA 86.1)',
+    degree: 'High School Graduate',
     school: 'Atidim High School, Or Akiva',
     start: 'September 2014',
     end: 'June 2017',
