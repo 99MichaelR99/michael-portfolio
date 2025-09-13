@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
-import { Github, Mail, MapPin, Moon, Sun, Link as LinkIcon, Briefcase, GraduationCap, FolderOpen } from 'lucide-react'
+import { Github, Linkedin, Mail, MapPin, Moon, Sun, Link as LinkIcon, Briefcase, GraduationCap, FolderOpen } from 'lucide-react'
 import { profile } from './data/profile'
 import { experience } from './data/experience'
 import { education } from './data/education'
@@ -82,6 +82,11 @@ function Hero(): React.ReactElement {
             {profile.github ? (
               <a href={profile.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-2xl glass px-3 py-2 text-sm hover:shadow">
                 <Github size={16}/> GitHub
+              </a>
+            ) : null}
+            {profile.linkedin ? (
+              <a href={profile.linkedin} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-2 rounded-2xl glass px-3 py-2 text-sm hover:shadow">
+                <Linkedin size={16} /> LinkedIn
               </a>
             ) : null}
           </div>
@@ -187,9 +192,9 @@ export default function App(): React.ReactElement {
     <div className="min-h-screen bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50">
       <Header />
       <Hero />
-      <Experience />
       <Education />
       <Projects />
+      <Experience />
       <Footer />
     </div>
   )

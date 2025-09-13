@@ -8,5 +8,5 @@ export const profile = {
   email: '99MichaelR99@gmail.com',
   phoneNumber: '+972545768299',
   github: 'https://github.com/99MichaelR99',
-  Linkedin: 'https://www.linkedin.com/in/michael-radzeiovsky/'
+  linkedin: 'https://www.linkedin.com/in/michael-radzeiovsky/'
 }
