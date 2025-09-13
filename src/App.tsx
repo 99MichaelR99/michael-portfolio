@@ -49,9 +49,9 @@ function Header(): React.ReactElement {
       <div className="container-custom flex items-center justify-between py-3">
         <a href="#top" className="font-semibold"> {profile.name} </a>
         <nav className="hidden md:flex gap-6 text-sm">
-          <a className="hover:underline" href="#experience">Experience</a>
           <a className="hover:underline" href="#education">Education</a>
           <a className="hover:underline" href="#projects">Projects</a>
+          <a className="hover:underline" href="#experience">Experience</a>
           <a className="hover:underline" href="#contact">Contact</a>
         </nav>
         <ThemeToggle />

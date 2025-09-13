@@ -1,10 +1,12 @@
 
 export const profile = {
   name: 'Michael Radzeiovsky',
-  title: 'Junior Software Developer (B.Sc. CS) — fast learner, effective communicator, and problem-solver',
+  title: 'Junior Software Developer (B.Sc. CS)',
   summary:
-    'I build practical, performance‑minded apps. Currently pursuing an M.Sc. in CS (Algorithms, AI/ML, data‑centric applications). Comfortable with React 19, TypeScript, Node/Express, and MongoDB.',
-  location: 'Israel (willing to work remotely)',
-  email: 'your.email@example.com',
-  github: 'https://github.com/your-username'
+    'Junior Software Developer (B.Sc. CS) — fast learner, effective communicator, and resourceful problem-solver. Seeking a part-time or full-time role in a software-related field; eager to learn new technologies and deliver results.',
+  location: 'Or Akiva, Israel (willing to work remotely)',
+  email: '99MichaelR99@gmail.com',
+  phoneNumber: '+972545768299',
+  github: 'https://github.com/99MichaelR99',
+  Linkedin: 'https://www.linkedin.com/in/michael-radzeiovsky/'
 }

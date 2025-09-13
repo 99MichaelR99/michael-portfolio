@@ -1,25 +1,25 @@
 
 export const experience = [
   {
-    role: 'Full‑Stack Developer — Game Language Verify (GLV)',
+    role: 'Self-made Projects',
     company: 'Personal Project',
     start: '2024',
     end: 'Present',
     highlights: [
-      'React + Node/Express + MongoDB app for verifying game language support.',
-      'Designed reusable React components; emphasized performance and DX.'
+      'React + Node/Express + MongoDB app for verifying game language support website project.',
+      'Know Well: Python, C, C++, C#, Java, JavaScript, and TypeScript.',
+      'Familiar with: React, Node.js, SQL, MongoDB, Neo4j, and HTML.'
     ],
-    link: 'https://github.com/your-username/game-language-verify'
+    link: 'https://github.com/99MichaelR99/game-language-verify'
   },
   {
-    role: 'Developer — MR‑Finance',
-    company: 'Personal Project',
-    start: '2024',
-    end: 'Present',
+    role: 'Managment Experience',
+    company: 'Yes-Planet Cinema, Zikhron Ya’akov',
+    start: '2017',
+    end: '2018',
     highlights: [
-      'TypeScript server/client split with data pipelines and automation.',
-      'Focused on clean architecture and maintainable state management.'
-    ],
-    link: 'https://github.com/your-username/mr-finance'
+      'Between high school and attending the institute, I worked at the movie theater concession stand and was later promoted to shift manager.',
+      'Won 1st place in the 2018 annual sales competition.'
+    ]
   }
 ]
