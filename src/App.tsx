@@ -53,7 +53,7 @@ function Section(props: {
   children: React.ReactNode;
 }): React.ReactElement {
   return (
-    <section id={props.id} className="container-custom my-12 scroll-mt-20">
+    <section id={props.id} className="container-custom my-16 scroll-mt-24">
       <div className="flex items-center gap-3 mb-4">
         <div className="rounded-2xl glass p-2">{props.icon}</div>
         <div>
@@ -82,11 +82,11 @@ function Header(): React.ReactElement {
           <a className="hover:underline" href="#education">
             Education
           </a>
-          <a className="hover:underline" href="#projects">
-            Projects
-          </a>
           <a className="hover:underline" href="#experience">
             Experience
+          </a>
+          <a className="hover:underline" href="#projects">
+            Projects
           </a>
           <a className="hover:underline" href="#contact">
             Contact
@@ -152,7 +152,7 @@ function Hero(): React.ReactElement {
             <ul className="text-sm space-y-2 list-disc ms-5">
               <li>Fast learner & effective communicator</li>
               <li>Focus: Algorithms, AI/ML, data-centric apps</li>
-              <li>React 19, TypeScript, Node/Express, MongoDB</li>
+              <li>React 19, JavaScript, Node/Express, MongoDB</li>
             </ul>
           </div>
         </div>
@@ -435,7 +435,7 @@ function Projects(): React.ReactElement {
         </div>
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid md:grid-cols-2 gap-6 xl:gap-8">
         {sorted.map((p, i) => (
           <ProjectCard key={i} p={p} />
         ))}
@@ -482,8 +482,8 @@ export default function App(): React.ReactElement {
       <Header />
       <Hero />
       <Education />
-      <Projects />
       <Experience />
+      <Projects />
       <Footer />
     </div>
   );

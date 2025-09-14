@@ -54,4 +54,9 @@
   .meta-chip {
     @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full border text-[11px];
   }
+
+  .container-custom {
+    /* was: mx-auto max-w-6xl px-4 */
+    @apply mx-auto max-w-7xl px-6 md:px-8;
+  }
 }
