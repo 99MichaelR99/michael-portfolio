@@ -1,33 +1,64 @@
-
 export const projects = [
   {
-    name: 'Game Language Verify (GLV)',
-    summary: 'A platform to track and verify video‑game language availability and metadata.',
-    stack: ['React 19', 'TypeScript', 'Node/Express', 'MongoDB'],
-    link: 'https://github.com/your-username/game-language-verify',
+    name: "MR-Finance",
+    summary:
+      "Personal finance dashboards with automated data collection and analysis.",
+    stack: ["TypeScript", "Node", "Google Sheets API"],
+    link: "https://github.com/your-username/mr-finance",
+    demo: "",
+    image: "/mr-finance.png",
     highlights: [
-      'Reusable components; clean Http service abstraction; strong typing.',
-      'End‑to‑end flow: data ingest, validation, and presentation.'
-    ]
+      "Automated currency conversion and reconciliation checks.",
+      "Configurable pipelines; attention to numerical precision.",
+    ],
+    accent: "#3b82f6",
+    where: "Personal Project",
+    when: "2025",
   },
   {
-    name: 'MR‑Finance',
-    summary: 'Personal finance dashboards with automated data collection and analysis.',
-    stack: ['TypeScript', 'Node', 'Google Sheets API'],
-    link: 'https://github.com/your-username/mr-finance',
+    name: "Game Language Verify (GLV)",
+    summary:
+      "A platform to track and verify video-game language availability and metadata.",
+    stack: ["React 19", "TypeScript", "Node/Express", "MongoDB"],
+    link: "https://github.com/99MichaelR99/GameLanguageLibrary",
+    demo: "",
+    image: "/glv.png",
     highlights: [
-      'Automated currency conversion and reconciliation checks.',
-      'Configurable pipelines; attention to numerical precision.'
-    ]
+      "Reusable components; clean Http service abstraction; strong typing.",
+      "End-to-end flow: data ingest, validation, and presentation.",
+    ],
+    accent: "#22c55e",
+    where: "Personal Project",
+    when: "2024",
   },
   {
-    name: 'Finance App',
-    summary: 'A TS/Node/Express starter for analytics and reporting.',
-    stack: ['TypeScript', 'Express', 'Vite'],
-    link: 'https://github.com/your-username/finance-app',
+    name: "VR Unity Scene with Avatars",
+    summary:
+      "Interactive VR scene in Unity showcasing diverse, generated avatars with locomotion, collision avoidance, event handling, and VR interactions inside a rebuilt Japanese-village environment.",
+    stack: ["Unity", "C#", "NavMesh", "VR (XR Input)", "Blender", "Mixamo"],
+    demo: "https://www.youtube.com/watch?v=4zsUFjWS_AM",
+    image: "/vr-avatars.png",
     highlights: [
-      'Modular architecture; easy to extend.',
-      'Dev‑friendly scripts and strict linting.'
-    ]
-  }
-]
+      "NavMesh pathfinding with obstacle avoidance + event system: avatars gather when one falls from a balcony (trigger + Unity Events).",
+      "Avatar pipeline: AvatarCLIP → PLY → FBX with colors (ImageToSTL), baked in Blender and rigged in Mixamo; performance tuned and streamed from PC to headset.",
+    ],
+    accent: "#22c55e",
+    where: "GIP & CGGC Labs — Technion Israel Institute of Technology",
+    when: "2023",
+  },
+  {
+    name: "12th-Grade Web Project (ASP.NET)",
+    summary:
+      "A 2017 high-school web project built in Visual Studio 2015 using ASP.NET (C#) with a Microsoft Access database. HTML handled the UI and SQL powered data operations.",
+    stack: ["ASP.NET (C#)", "HTML", "SQL", "Microsoft Access"],
+    demo: "https://www.youtube.com/watch?v=4wL2EBMB9UA",
+    image: "/hs-web-2017.png",
+    highlights: [
+      "Developed in Visual Studio 2015 with ASP.NET (C#).",
+      "Microsoft Access database with SQL-backed CRUD flows.",
+    ],
+    accent: "#0ea5e9",
+    where: "High School (12th grade)",
+    when: "2017",
+  },
+];

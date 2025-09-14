@@ -19,7 +19,8 @@ export const education = [
       'Developed a VR project in Unity.',
       'Recipient of the Dean’s Excellence Award in (Winter 2020/21).',
       'Favorite courses: Systems Programming, Data Structures, Algorithms, Artificial Intelligence (AI), and Network Security.'
-    ]
+    ],
+    link: 'https://drive.google.com/file/d/1eY0bD0svEynJpFRayTSNbK_r63xEb7Wt/view'
   },
   {
     degree: 'High School Graduate',

@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
-import { Github, Linkedin, Mail, MapPin, Moon, Sun, Link as LinkIcon, Briefcase, GraduationCap, FolderOpen } from 'lucide-react'
+import { Github, Linkedin, Mail, MapPin, Moon, Sun, Link as LinkIcon, Briefcase, GraduationCap, FolderOpen, Calendar } from 'lucide-react'
 import { profile } from './data/profile'
 import { experience } from './data/experience'
 import { education } from './data/education'
@@ -155,22 +155,122 @@ function Education(): React.ReactElement {
 }
 
 function Projects(): React.ReactElement {
+  const [query, setQuery] = React.useState('');
+  const [active, setActive] = React.useState<string>('All');
+
+  type Project = typeof projects[number];
+  const stacks = Array.from(new Set(projects.flatMap(p => p.stack)));
+
+  const filtered = projects.filter(p => {
+    const matchesStack = active === 'All' || p.stack.includes(active);
+    const q = query.trim().toLowerCase();
+    const matchesQuery =
+      q.length === 0 ||
+      p.name.toLowerCase().includes(q) ||
+      p.summary.toLowerCase().includes(q) ||
+      p.stack.join(' ').toLowerCase().includes(q) ||
+      (p.where ?? '').toLowerCase().includes(q) ||
+      (p.when ?? '').toLowerCase().includes(q);
+    return matchesStack && matchesQuery;
+  });
+
+  // extract last year number in the string; fallback 0
+  function yearVal(s?: string): number {
+    const m = s?.match(/(20\d{2}|19\d{2})/g);
+    return m ? parseInt(m[m.length - 1], 10) : 0;
+  }
+
+  const sorted = [...filtered].sort((a, b) => yearVal(b.when) - yearVal(a.when));
+
+  function badgeTone(s: string): string {
+    const t = s.toLowerCase();
+    if (t.includes('react')) return 'bg-emerald-500/10 border-emerald-500/30 text-emerald-700 dark:text-emerald-300';
+    if (t.includes('node') || t.includes('express')) return 'bg-lime-500/10 border-lime-500/30 text-lime-700 dark:text-lime-300';
+    if (t.includes('typescript')) return 'bg-sky-500/10 border-sky-500/30 text-sky-700 dark:text-sky-300';
+    if (t.includes('mongo')) return 'bg-emerald-500/10 border-emerald-500/30 text-emerald-700 dark:text-emerald-300';
+    if (t.includes('vite')) return 'bg-fuchsia-500/10 border-fuchsia-500/30 text-fuchsia-700 dark:text-fuchsia-300';
+    return 'bg-zinc-500/10 border-zinc-500/30 text-zinc-700 dark:text-zinc-300';
+  }
+
+  function ProjectCard({ p }: { p: Project }): React.ReactElement {
+    const ref = React.useRef<HTMLDivElement | null>(null);
+
+    const onMove = (e: React.MouseEvent): void => {
+      const card = ref.current; if (!card) return;
+      const r = card.getBoundingClientRect();
+      const x = e.clientX - r.left, y = e.clientY - r.top;
+      const dx = (x / r.width) * 2 - 1, dy = (y / r.height) * 2 - 1;
+      const rx = (-dy * 4).toFixed(2), ry = (dx * 4).toFixed(2);
+      card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    };
+    const onLeave = (): void => { const card = ref.current; if (card) card.style.transform = ''; };
+
+    return (
+      <div className="card-outer" style={{ ['--accent' as any]: p.accent ?? '#60a5fa' }}>
+        <div ref={ref} className="project-tilt card-inner" onMouseMove={onMove} onMouseLeave={onLeave}>
+          {p.image ? <img src={p.image} alt={`${p.name} screenshot`} className="project-thumb" /> : null}
+
+          <div className="mb-2">
+            <h4 className="font-semibold">{p.name}</h4>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400">{p.stack.join(' • ')}</p>
+
+            {(p.where || p.when) ? (
+              <div className="mt-1 flex gap-3 text-xs text-zinc-500 dark:text-zinc-400">
+                {p.where ? <span className="inline-flex items-center gap-1"><MapPin size={14}/>{p.where}</span> : null}
+                {p.when  ? <span className="inline-flex items-center gap-1"><Calendar size={14}/>{p.when}</span> : null}
+              </div>
+            ) : null}
+          </div>
+
+          <p className="text-sm grow">{p.summary}</p>
+
+          <div className="flex gap-2 flex-wrap mt-3">
+            {p.stack.map((s, idx) => <span key={idx} className={`badge ${badgeTone(s)}`}>{s}</span>)}
+          </div>
+
+          <div className="mt-4 flex gap-2">
+            <a href={p.link} target="_blank" rel="noreferrer" className="btn">Code</a>
+            {p.demo ? <a href={p.demo} target="_blank" rel="noreferrer" className="btn">Live demo</a> : null}
+          </div>
+
+          <div className="text-xs mt-3">
+            {p.highlights.slice(0, 2).map((h, idx) => <div key={idx}>• {h}</div>)}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <Section id="projects" icon={<FolderOpen size={18}/>} title="Projects" subtitle="Selected work — click cards for details">
+    <Section id="projects" icon={<FolderOpen size={18}/>} title="Projects" subtitle="Selected work — filter by stack or search">
+      <div className="rounded-2xl glass p-4 mb-4">
+        <div className="flex flex-col md:flex-row gap-3 md:items-center md:justify-between">
+          <div className="flex gap-2 flex-wrap">
+            <button onClick={() => setActive('All')}
+              className={`px-3 py-1.5 text-sm rounded-full border ${active === 'All' ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900' : 'glass'}`}>
+              All
+            </button>
+            {stacks.map(s => (
+              <button key={s} onClick={() => setActive(s)}
+                className={`px-3 py-1.5 text-sm rounded-full border ${active === s ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900' : 'glass'}`}
+                title={`Filter by ${s}`}>
+                {s}
+              </button>
+            ))}
+          </div>
+          <input
+            value={query} onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search projects (name, stack, where, year)…"
+            className="w-full md:w-64 rounded-xl glass px-3 py-2 text-sm outline-none"
+          />
+        </div>
+      </div>
+
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {projects.map((p, i) => (
-          <a key={i} href={p.link} target="_blank" rel="noreferrer" className="rounded-2xl glass p-4 hover:shadow transition-shadow flex flex-col">
-            <div className="mb-2">
-              <h4 className="font-semibold">{p.name}</h4>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400">{p.stack.join(' • ')}</p>
-            </div>
-            <p className="text-sm grow">{p.summary}</p>
-            <div className="text-xs mt-3">{p.highlights.slice(0,2).map((h, idx) => <div key={idx}>• {h}</div>)}</div>
-          </a>
-        ))}
+        {sorted.map((p, i) => <ProjectCard key={i} p={p} />)}
       </div>
     </Section>
-  )
+  );
 }
 
 function Footer(): React.ReactElement {
