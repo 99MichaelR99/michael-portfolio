@@ -150,9 +150,12 @@ function Hero(): React.ReactElement {
           <div className="rounded-2xl glass p-6">
             <h3 className="font-semibold mb-2">Highlights</h3>
             <ul className="text-sm space-y-2 list-disc ms-5">
-              <li>Fast learner & effective communicator</li>
-              <li>Focus: Algorithms, AI/ML, data-centric apps</li>
-              <li>React 19, JavaScript, Node/Express, MongoDB</li>
+              <li>Fast learner, Problem Solver, & effective communicator</li>
+              <li>Focus: Full-Stack, Algorithms, AI/ML, data-centric apps</li>
+              <li>
+                Strong in C, C++, C#, Java, JavaScript/TypeScript, and Python;
+                familiar with React, Node.js, SQL, MongoDB, Neo4j, and HTML.
+              </li>
             </ul>
           </div>
         </div>
@@ -166,7 +169,7 @@ function ItemCard(props: {
   subtitle?: string;
   meta?: string;
   bullets?: string[];
-  link?: string;
+  link?: string; // ← already existed; we'll use it for the preview
 }): React.ReactElement {
   return (
     <div className="rounded-2xl glass p-5 hover:shadow transition-shadow">
@@ -190,16 +193,63 @@ function ItemCard(props: {
           </a>
         ) : null}
       </div>
+
       {props.meta ? (
         <p className="text-xs mt-1 text-zinc-500 dark:text-zinc-400">
           {props.meta}
         </p>
       ) : null}
+
       {props.bullets && props.bullets.length > 0 ? (
         <ul className="mt-3 space-y-2 list-disc ms-5 text-sm">
-          {props.bullets.map((b, i) => (
-            <li key={i}>{b}</li>
-          ))}
+          {props.bullets.map((b, i) => {
+            const isGpa = /^GPA\b/i.test(b);
+            if (isGpa && props.link) {
+              const preview = props.link.replace(/\/view(\?.*)?$/, "/preview");
+              return (
+                <li key={i}>
+                  <div className="flex items-center gap-3">
+                    <span>{b}</span>
+                    <details className="ml-1">
+                      <summary
+                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium
+                                   bg-[color-mix(in_oklab,var(--accent,#60a5fa),white_85%)]
+                                   dark:bg-[color-mix(in_oklab,var(--accent,#60a5fa),black_75%)]
+                                   text-black/80 dark:text-white/90 border border-white/40 dark:border-white/10
+                                   cursor-pointer select-none"
+                      >
+                        Verified transcript
+                      </summary>
+
+                      <div className="mt-3 rounded-2xl overflow-hidden border border-white/10">
+                        <div className="aspect-[16/10] bg-black/40">
+                          <iframe
+                            title="Transcript preview"
+                            src={preview}
+                            className="w-full h-full"
+                            allow="autoplay"
+                          />
+                        </div>
+                        <div className="px-3 py-2 text-right bg-black/10">
+                          <a
+                            href={props.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs underline opacity-80 hover:opacity-100"
+                          >
+                            Open in new tab
+                          </a>
+                        </div>
+                      </div>
+                    </details>
+                  </div>
+                </li>
+              );
+            }
+
+            // default bullet
+            return <li key={i}>{b}</li>;
+          })}
         </ul>
       ) : null}
     </div>
@@ -237,7 +287,7 @@ function Education(): React.ReactElement {
       icon={<GraduationCap size={18} />}
       title="Education"
     >
-      <div className="grid md:grid-cols-2 gap-4">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
         {education.map((ed, i) => (
           <ItemCard
             key={i}
@@ -245,6 +295,7 @@ function Education(): React.ReactElement {
             subtitle={ed.school}
             meta={`${ed.start} — ${ed.end}`}
             bullets={ed.details}
+            link={ed.link}
           />
         ))}
       </div>

@@ -1,6 +1,6 @@
 export const projects = [
   {
-    name: "MR-Finance",
+    name: "MR-Finance (In Development)",
     summary:
       "Personal finance dashboards with automated data collection and analysis.",
     stack: ["TypeScript", "Node", "Google Sheets API"],
@@ -11,7 +11,7 @@ export const projects = [
       "Automated currency conversion and reconciliation checks.",
       "Configurable pipelines; attention to numerical precision.",
     ],
-    accent: "#3b82f6",
+    accent: "#ff003cff",
     where: "Personal Project",
     when: "2025",
   },
@@ -27,7 +27,7 @@ export const projects = [
       "Reusable components; clean Http service abstraction; strong typing.",
       "End-to-end flow: data ingest, validation, and presentation.",
     ],
-    accent: "#22c55e",
+    accent: "#3b82f6",
     where: "Personal Project",
     when: "2024",
   },
@@ -42,7 +42,7 @@ export const projects = [
       "NavMesh pathfinding with obstacle avoidance + event system: avatars gather when one falls from a balcony (trigger + Unity Events).",
       "Avatar pipeline: AvatarCLIP → PLY → FBX with colors (ImageToSTL), baked in Blender and rigged in Mixamo; performance tuned and streamed from PC to headset.",
     ],
-    accent: "#22c55e",
+    accent: "#f3bb03ff",
     where: "GIP & CGGC Labs — Technion Israel Institute of Technology",
     when: "2023",
   },
@@ -57,7 +57,7 @@ export const projects = [
       "Developed in Visual Studio 2015 with ASP.NET (C#).",
       "Microsoft Access database with SQL-backed CRUD flows.",
     ],
-    accent: "#0ea5e9",
+    accent: "#22c55e",
     where: "High School (12th grade)",
     when: "2017",
   },
