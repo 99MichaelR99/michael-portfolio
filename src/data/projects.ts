@@ -6,7 +6,7 @@ export const projects = [
     stack: ["TypeScript", "Node", "Google Sheets API"],
     link: "https://github.com/your-username/mr-finance",
     demo: "",
-    image: "/mr-finance.png",
+    image: "mr-finance.png",
     highlights: [
       "Automated currency conversion and reconciliation checks.",
       "Configurable pipelines; attention to numerical precision.",
@@ -16,13 +16,13 @@ export const projects = [
     when: "2025",
   },
   {
-    name: "Game Language Verify (GLV)",
+    name: "Game Language Library",
     summary:
       "A platform to track and verify video-game language availability and metadata.",
-    stack: ["React 19", "TypeScript", "Node/Express", "MongoDB"],
+    stack: ["React 19", "JavaScript", "Node/Express", "MongoDB"],
     link: "https://github.com/99MichaelR99/GameLanguageLibrary",
     demo: "",
-    image: "/glv.png",
+    image: "glv.png",
     highlights: [
       "Reusable components; clean Http service abstraction; strong typing.",
       "End-to-end flow: data ingest, validation, and presentation.",
@@ -37,7 +37,7 @@ export const projects = [
       "Interactive VR scene in Unity showcasing diverse, generated avatars with locomotion, collision avoidance, event handling, and VR interactions inside a rebuilt Japanese-village environment.",
     stack: ["Unity", "C#", "NavMesh", "VR (XR Input)", "Blender", "Mixamo"],
     demo: "https://www.youtube.com/watch?v=4zsUFjWS_AM",
-    image: "/vr-avatars.png",
+    image: "vr-avatars.png",
     highlights: [
       "NavMesh pathfinding with obstacle avoidance + event system: avatars gather when one falls from a balcony (trigger + Unity Events).",
       "Avatar pipeline: AvatarCLIP → PLY → FBX with colors (ImageToSTL), baked in Blender and rigged in Mixamo; performance tuned and streamed from PC to headset.",
@@ -52,7 +52,7 @@ export const projects = [
       "A 2017 high-school web project built in Visual Studio 2015 using ASP.NET (C#) with a Microsoft Access database. HTML handled the UI and SQL powered data operations.",
     stack: ["ASP.NET (C#)", "HTML", "SQL", "Microsoft Access"],
     demo: "https://www.youtube.com/watch?v=4wL2EBMB9UA",
-    image: "/hs-web-2017.png",
+    image: "hs-web-2017.png",
     highlights: [
       "Developed in Visual Studio 2015 with ASP.NET (C#).",
       "Microsoft Access database with SQL-backed CRUD flows.",
