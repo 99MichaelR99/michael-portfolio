@@ -169,7 +169,9 @@ function ItemCard(props: {
   subtitle?: string;
   meta?: string;
   bullets?: string[];
-  link?: string; // ← already existed; we'll use it for the preview
+  link?: string;
+  awardLink?: string;
+  showHeaderLink?: boolean;
 }): React.ReactElement {
   return (
     <div className="rounded-2xl glass p-5 hover:shadow transition-shadow">
@@ -182,6 +184,16 @@ function ItemCard(props: {
             </p>
           ) : null}
         </div>
+        {props.showHeaderLink !== false && props.link ? (
+          <a
+            href={props.link}
+            target="_blank"
+            rel="noreferrer"
+            className="shrink-0 inline-flex items-center gap-1 text-sm hover:underline"
+          >
+            <LinkIcon size={16} /> View
+          </a>
+        ) : null}
         {props.link ? (
           <a
             href={props.link}
@@ -204,51 +216,33 @@ function ItemCard(props: {
         <ul className="mt-3 space-y-2 list-disc ms-5 text-sm">
           {props.bullets.map((b, i) => {
             const isGpa = /^GPA\b/i.test(b);
-            if (isGpa && props.link) {
-              const preview = props.link.replace(/\/view(\?.*)?$/, "/preview");
-              return (
-                <li key={i}>
-                  <div className="flex items-center gap-3">
-                    <span>{b}</span>
-                    <details className="ml-1">
-                      <summary
-                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium
-                                   bg-[color-mix(in_oklab,var(--accent,#60a5fa),white_85%)]
-                                   dark:bg-[color-mix(in_oklab,var(--accent,#60a5fa),black_75%)]
-                                   text-black/80 dark:text-white/90 border border-white/40 dark:border-white/10
-                                   cursor-pointer select-none"
-                      >
-                        Verified transcript
-                      </summary>
+            const isAward = /Dean.?s Excellence Award/i.test(b);
 
-                      <div className="mt-3 rounded-2xl overflow-hidden border border-white/10">
-                        <div className="aspect-[16/10] bg-black/40">
-                          <iframe
-                            title="Transcript preview"
-                            src={preview}
-                            className="w-full h-full"
-                            allow="autoplay"
-                          />
-                        </div>
-                        <div className="px-3 py-2 text-right bg-black/10">
-                          <a
-                            href={props.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-xs underline opacity-80 hover:opacity-100"
-                          >
-                            Open in new tab
-                          </a>
-                        </div>
-                      </div>
-                    </details>
-                  </div>
-                </li>
-              );
-            }
-
-            // default bullet
-            return <li key={i}>{b}</li>;
+            return (
+              <li key={i}>
+                {b}
+                {isGpa && props.link ? (
+                  <a
+                    href={props.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ml-2 underline opacity-80 hover:opacity-100"
+                  >
+                    (click for details)
+                  </a>
+                ) : null}
+                {isAward && props.awardLink ? (
+                  <a
+                    href={props.awardLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ml-2 underline opacity-80 hover:opacity-100"
+                  >
+                    (click for details)
+                  </a>
+                ) : null}
+              </li>
+            );
           })}
         </ul>
       ) : null}
@@ -296,6 +290,8 @@ function Education(): React.ReactElement {
             meta={`${ed.start} — ${ed.end}`}
             bullets={ed.details}
             link={ed.link}
+            awardLink={(ed as any).awardLink}
+            showHeaderLink={false}
           />
         ))}
       </div>

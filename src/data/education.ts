@@ -20,6 +20,8 @@ export const education = [
       "Favorite courses: Systems Programming, Data Structures, Algorithms, Artificial Intelligence (AI), and Network Security.",
     ],
     link: "https://drive.google.com/file/d/1eY0bD0svEynJpFRayTSNbK_r63xEb7Wt/view",
+    awardLink:
+      "https://drive.google.com/file/d/1Kmht4vbXd-Ctimr-tHyURo8BZSwWN_ea/view",
   },
   {
     degree: "High School Graduate",
