@@ -169,9 +169,12 @@ function ItemCard(props: {
   subtitle?: string;
   meta?: string;
   bullets?: string[];
+
+  // For inline bullet links:
   link?: string;
   awardLink?: string;
-  showHeaderLink?: boolean;
+
+  headerLinks?: { href: string; label?: string }[];
 }): React.ReactElement {
   return (
     <div className="rounded-2xl glass p-5 hover:shadow transition-shadow">
@@ -184,25 +187,22 @@ function ItemCard(props: {
             </p>
           ) : null}
         </div>
-        {props.showHeaderLink !== false && props.link ? (
-          <a
-            href={props.link}
-            target="_blank"
-            rel="noreferrer"
-            className="shrink-0 inline-flex items-center gap-1 text-sm hover:underline"
-          >
-            <LinkIcon size={16} /> View
-          </a>
-        ) : null}
-        {props.link ? (
-          <a
-            href={props.link}
-            target="_blank"
-            rel="noreferrer"
-            className="shrink-0 inline-flex items-center gap-1 text-sm hover:underline"
-          >
-            <LinkIcon size={16} /> View
-          </a>
+
+        {/* render ONLY what you pass in headerLinks */}
+        {props.headerLinks && props.headerLinks.length > 0 ? (
+          <div className="shrink-0 flex items-center gap-3">
+            {props.headerLinks.map((h, idx) => (
+              <a
+                key={idx}
+                href={h.href}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 text-sm hover:underline"
+              >
+                <LinkIcon size={16} /> {h.label ?? "View"}
+              </a>
+            ))}
+          </div>
         ) : null}
       </div>
 
@@ -212,6 +212,7 @@ function ItemCard(props: {
         </p>
       ) : null}
 
+      {/* bullets with inline “(click for details)” links for GPA + Award */}
       {props.bullets && props.bullets.length > 0 ? (
         <ul className="mt-3 space-y-2 list-disc ms-5 text-sm">
           {props.bullets.map((b, i) => {
@@ -266,7 +267,7 @@ function Experience(): React.ReactElement {
             subtitle={e.company}
             meta={`${e.start} — ${e.end}`}
             bullets={e.highlights}
-            link={e.link}
+            headerLinks={e.link ? [{ href: e.link, label: "View" }] : []}
           />
         ))}
       </div>
@@ -290,8 +291,8 @@ function Education(): React.ReactElement {
             meta={`${ed.start} — ${ed.end}`}
             bullets={ed.details}
             link={ed.link}
-            awardLink={(ed as any).awardLink}
-            showHeaderLink={false}
+            awardLink={(ed as any).awardLink} // keeps “(click for details)” in bullets
+            headerLinks={[]} // << no top-right link
           />
         ))}
       </div>
