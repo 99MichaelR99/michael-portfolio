@@ -1,40 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Accent-powered gradient ring with glassy inner */
-.card-outer {
-  position: relative;
-  border-radius: 1rem;
-  padding: 1px; /* ring thickness */
-  background: linear-gradient(
-    135deg,
-    var(--accent, #60a5fa),
-    color-mix(in oklab, var(--accent, #60a5fa), white 30%)
-  );
-}
-.dark .card-outer {
-  background: linear-gradient(
-    135deg,
-    var(--accent, #60a5fa),
-    color-mix(in oklab, var(--accent, #60a5fa), black 20%)
-  );
-}
-.card-outer:hover {
-  box-shadow: 0 16px 36px -18px color-mix(in oklab, var(--accent, #60a5fa), transparent 75%);
-}
+@layer components {
+  .card-outer {
+    position: relative;
+    border-radius: 1rem;
+    padding: 1px; /* ring thickness */
+    background: linear-gradient(
+      135deg,
+      var(--accent, #60a5fa),
+      color-mix(in oklab, var(--accent, #60a5fa), white 30%)
+    );
+  }
+  .dark .card-outer {
+    background: linear-gradient(
+      135deg,
+      var(--accent, #60a5fa),
+      color-mix(in oklab, var(--accent, #60a5fa), black 20%)
+    );
+  }
+  .card-outer:hover {
+    box-shadow: 0 16px 36px -18px color-mix(in oklab, var(--accent, #60a5fa), transparent
+          75%);
+  }
 
-.card-inner {
-  @apply rounded-2xl glass p-4 h-full flex flex-col;
+  .card-inner {
+    @apply rounded-2xl glass p-4 h-full flex flex-col;
+  }
+
+  /* Subtle 3D tilt */
+  .project-tilt {
+    transition: transform 0.12s ease, box-shadow 0.2s ease;
+    will-change: transform;
+  }
+
+  /* Reusable badges & buttons */
+  .badge {
+    @apply text-xs px-2 py-1 rounded-full border;
+  }
+  .btn {
+    @apply inline-flex items-center gap-2 text-sm px-3 py-1.5 rounded-xl border hover:shadow;
+  }
+
+  /* Optional: nicer image crop */
+  .project-thumb {
+    @apply rounded-xl mb-3 w-full aspect-video object-cover;
+  }
+
+  .meta-chip {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full border text-[11px];
+  }
 }
-
-/* Subtle 3D tilt */
-.project-tilt {
-  transition: transform .12s ease, box-shadow .2s ease;
-  will-change: transform;
-}
-
-/* Reusable badges & buttons */
-.badge { @apply text-xs px-2 py-1 rounded-full border; }
-.btn   { @apply inline-flex items-center gap-2 text-sm px-3 py-1.5 rounded-xl border hover:shadow; }
-
-/* Optional: nicer image crop */
-.project-thumb { @apply rounded-xl mb-3 w-full aspect-video object-cover; }
-
-.meta-chip { @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full border text-[11px]; }

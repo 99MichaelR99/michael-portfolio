@@ -1,4 +1,3 @@
-
 # Michael Radzeiovsky — Portfolio
 
 A clean, fast React 19 + Vite + Tailwind portfolio (dark/light) with projects grid,
