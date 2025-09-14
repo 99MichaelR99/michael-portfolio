@@ -1,7 +1,12 @@
-@import "tailwindcss/nesting";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Your reusable “frosted glass” chip */
+.glass {
+  @apply bg-white/70 dark:bg-zinc-900/60 backdrop-blur-md
+         border border-zinc-200/60 dark:border-zinc-800/60;
+}
 
 /* Accent-powered gradient ring with glassy inner */
 @layer components {
@@ -27,29 +32,25 @@
           75%);
   }
 
+  /* IMPORTANT: remove `glass` from @apply here */
   .card-inner {
-    @apply rounded-2xl glass p-4 h-full flex flex-col;
+    @apply rounded-2xl p-4 h-full flex flex-col;
   }
 
-  /* Subtle 3D tilt */
   .project-tilt {
     transition: transform 0.12s ease, box-shadow 0.2s ease;
     will-change: transform;
   }
 
-  /* Reusable badges & buttons */
   .badge {
     @apply text-xs px-2 py-1 rounded-full border;
   }
   .btn {
     @apply inline-flex items-center gap-2 text-sm px-3 py-1.5 rounded-xl border hover:shadow;
   }
-
-  /* Optional: nicer image crop */
   .project-thumb {
     @apply rounded-xl mb-3 w-full aspect-video object-cover;
   }
-
   .meta-chip {
     @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full border text-[11px];
   }
