@@ -21,8 +21,8 @@ export const projects = [
       "A platform to track and verify video-game language availability and metadata.",
     stack: ["React 19", "JavaScript", "Node/Express", "MongoDB"],
     link: "https://github.com/99MichaelR99/GameLanguageLibrary",
-    demo: "",
-    image: "glv.png",
+    demo: "https://99michaelr99.github.io/GameLanguageLibrary/#/",
+    image: "gll.png",
     highlights: [
       "Reusable components; clean Http service abstraction; strong typing.",
       "End-to-end flow: data ingest, validation, and presentation.",
