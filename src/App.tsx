@@ -378,9 +378,11 @@ function Projects(): React.ReactElement {
         >
           {p.image ? (
             <img
-              src={p.image}
+              src={`${import.meta.env.BASE_URL}${p.image}`} // works with /public + GitHub Pages subpath
               alt={`${p.name} screenshot`}
-              className="project-thumb"
+              className="w-full h-64 object-contain rounded-xl bg-black/5 dark:bg-white/5"
+              loading="lazy"
+              decoding="async"
             />
           ) : null}
 
