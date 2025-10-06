@@ -36,6 +36,7 @@ export const projects = [
     summary:
       "Interactive VR scene in Unity showcasing diverse, generated avatars with locomotion, collision avoidance, event handling, and VR interactions inside a rebuilt Japanese-village environment.",
     stack: ["Unity", "C#", "NavMesh", "VR (XR Input)", "Blender", "Mixamo"],
+    link: "https://ranmarashi7.wixsite.com/vr-project",
     demo: "https://www.youtube.com/watch?v=4zsUFjWS_AM",
     image: "vr-avatars.png",
     highlights: [
